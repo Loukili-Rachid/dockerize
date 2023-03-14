@@ -1,12 +1,12 @@
 # dockerize
 
 # first: 
-# after cloning this project make sure to move these file inside your laravel app 
+# After cloning this project, ensure that you move these files into your Laravel application.  
 
 .docker  
 docker-compose.yml  
 
-# then make sure to set different ports for each project
+# Ensure that you set different ports for each project. 
 # Example:
 
 APP_URL=http://127.0.0.1:9011  
@@ -20,3 +20,8 @@ REDIS_PORT=9015
 DB_PORT=9016  
 
 DB_HOST=host.docker.internal  
+
+To dockerize the project cmd:  
+docker-compose up --build -d 
+
+Note! Please ensure that you have installed and set up Docker before proceeding.
