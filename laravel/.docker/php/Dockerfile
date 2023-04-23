@@ -18,9 +18,8 @@ RUN apk add --no-cache $PHPIZE_DEPS \
 RUN mkdir -p /var/www/html/storage/logs \
     && touch /var/www/html/storage/logs/laravel.log
 # Fix rights
-RUN chown -R www-data:www-data /var/www/html*
+RUN chown -R www-data:www-data /var/www/html/storage
 RUN chmod -R 775 /var/www/html/storage
-RUN chmod -R 775 /var/www/html/storage/logs
 
 WORKDIR /var/www/html
 

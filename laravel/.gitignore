@@ -1,0 +1,2 @@
+.docker/jenkins_home/*
+!.docker/jenkins_home/.keep

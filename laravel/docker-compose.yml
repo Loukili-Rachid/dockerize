@@ -10,7 +10,7 @@ services:
             - ${APP_PORT}:80
         volumes:
             - ./:/var/www/html
-            - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - .docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
         depends_on:
             - php-fpm
         restart: always
@@ -50,7 +50,7 @@ services:
         ports:
             - ${REDIS_PORT}:6379
         volumes:
-            - ./.docker/redis/config/:/usr/local/etc/redis/redis.conf
+            - .docker/redis/config/:/usr/local/etc/redis/redis.conf
         command: redis-server /usr/local/etc/redis/redis.conf
         networks:
             - laravel_dockerized
@@ -83,3 +83,10 @@ services:
             - php-fpm
             - mariadb
         restart: always
+    jenkins:
+        container_name: ${APP_NAME}_jenkins
+        image: jenkins/jenkins:lts
+        ports:
+        - "${JENKINS_PORT}:8080"
+        volumes:
+        - .docker/jenkins_home:/var/jenkins_home
