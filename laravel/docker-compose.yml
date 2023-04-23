@@ -83,9 +83,19 @@ services:
             - php-fpm
             - mariadb
         restart: always
+    # jenkins:
+    #     container_name: ${APP_NAME}_jenkins
+    #     image: jenkins/jenkins:lts
+    #     ports:
+    #     - "${JENKINS_PORT}:8080"
+    #     volumes:
+    #     - .docker/jenkins/jenkins_home:/var/jenkins_home
+    
     jenkins:
         container_name: ${APP_NAME}_jenkins
-        image: jenkins/jenkins:lts
+        build:
+            context: .
+            dockerfile: /.docker/jenkins/Dockerfile
         ports:
         - "${JENKINS_PORT}:8080"
         volumes:
