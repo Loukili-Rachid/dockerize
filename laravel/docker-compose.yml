@@ -89,4 +89,4 @@ services:
         ports:
         - "${JENKINS_PORT}:8080"
         volumes:
-        - .docker/jenkins_home:/var/jenkins_home
+        - .docker/jenkins/jenkins_home:/var/jenkins_home
