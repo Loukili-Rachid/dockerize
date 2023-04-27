@@ -5,8 +5,8 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 RUN docker-php-ext-install opcache
 
-COPY /.docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
-COPY /.docker/php/php-fpm.ini /usr/local/etc/php/conf.d/php-fpm.ini
+COPY .docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+COPY .docker/php/php-fpm.ini /usr/local/etc/php/conf.d/php-fpm.ini
 
 
 

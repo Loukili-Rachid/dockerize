@@ -11,7 +11,7 @@ RUN apk add --no-cache --virtual builddeps \
 
 RUN docker-php-ext-install opcache
 
-COPY /.docker/cronjob/crontab /etc/crontabs/root
+COPY .docker/cronjob/crontab /etc/crontabs/root
 
 RUN touch /var/log/cron.log
 

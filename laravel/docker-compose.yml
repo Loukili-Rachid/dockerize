@@ -19,7 +19,7 @@ services:
     php-fpm:
         build:
             context: .
-            dockerfile: /.docker/php/Dockerfile
+            dockerfile: .docker/php/Dockerfile
         container_name: ${APP_NAME}_php
         restart: always
         tty: true
@@ -73,7 +73,7 @@ services:
         container_name: ${APP_NAME}_cronjob
         build:
             context: .
-            dockerfile: /.docker/cronjob/Dockerfile
+            dockerfile: .docker/cronjob/Dockerfile
         volumes:
             - ./:/var/www/html
         ports:
@@ -83,20 +83,20 @@ services:
             - php-fpm
             - mariadb
         restart: always
-    # jenkins:
-    #     container_name: ${APP_NAME}_jenkins
-    #     image: jenkins/jenkins:lts
-    #     ports:
-    #     - "${JENKINS_PORT}:8080"
-    #     volumes:
-    #     - .docker/jenkins/jenkins_home:/var/jenkins_home
-    
     jenkins:
         container_name: ${APP_NAME}_jenkins
-        build:
-            context: .
-            dockerfile: /.docker/jenkins/Dockerfile
+        image: jenkins/jenkins:lts
         ports:
         - "${JENKINS_PORT}:8080"
         volumes:
         - .docker/jenkins/jenkins_home:/var/jenkins_home
+    
+    # jenkins:
+    #     container_name: ${APP_NAME}_jenkins
+    #     build:
+    #         context: .
+    #         dockerfile: .docker/jenkins/Dockerfile
+    #     ports:
+    #     - "${JENKINS_PORT}:8080"
+    #     volumes:
+    #     - .docker/jenkins/jenkins_home:/var/jenkins_home

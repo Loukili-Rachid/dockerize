@@ -14,12 +14,9 @@ RUN apt-get update && apt-get install -y \
        stable" \
     && apt-get update && apt-get install -y docker-ce
 
+RUN usermod -aG docker jenkins
 COPY .docker/jenkins/jenkins_home/ /var/jenkins_home/
-RUN chown -R jenkins:jenkins /var/jenkins_home/caches
-RUN chmod -R 755 /var/jenkins_home/caches/*
+#RUN chown -R jenkins:jenkins /var/jenkins_home/caches
+#RUN chmod -R 755 /var/jenkins_home/caches/*
 
-
-
-
-
-
+CMD ["chmod", "+x", "/var/jenkins_home/caches/" , "&&", "chmod", "+x", "/var/jenkins_home/caches/*"]
