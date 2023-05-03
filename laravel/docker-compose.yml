@@ -31,7 +31,7 @@ services:
         networks:
             - laravel_dockerized
     mariadb:
-        image: mariadb:10
+        image: mariadb:10.10
         container_name: ${APP_NAME}_mariadb
         restart: unless-stopped
         ports:
